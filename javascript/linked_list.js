@@ -1,16 +1,21 @@
 class LinkedList {
-  constructor() {
-
+  constructor(head=null) {
+    this.head = head
   }
 
-  iterate() {
-
+  iterate(callback) {
+    let currentNode = this.head
+    while (currentNode) {
+      callback(currentNode)
+      currentNode = currentNode.next
+    }
+    return this.head
   }
 
   // print each node's value on its own line
   // use your iterate method to be DRY! Don't get caught in the code rain, brrr.
   print() {
-
+    console.log()
   }
 
   // find the node with the target value and return it
@@ -60,14 +65,17 @@ class LinkedList {
 }
 
 class Node {
-  constructor() {
-    
+  constructor(value=null, next=null) {
+    this.value = value
+    this.next = next
   }
 }
 
 if (require.main === module) {
   // add your own tests in here
-  
+  const n = new Node('Hamtaro', new Node('Walter White'))
+  const ll = new LinkedList(n)
+  ll.iterate(console.log)
 }
 
 module.exports = {
